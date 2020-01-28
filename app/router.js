@@ -5,7 +5,10 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  app.passport.mount('github');
-
+  const github = app.passport.authenticate('github', {
+    callbackURL: '/api/passport/github/callback'
+  });
+  router.get('/passport/github', github);
+  router.get('/passport/github/callback', github);
   app.router.get('/user/getCurrentUser', app.controller.user.getCurrentUser);
 };

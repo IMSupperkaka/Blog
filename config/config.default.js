@@ -21,8 +21,7 @@ module.exports = appInfo => {
   config.passportGithub = {
     key: '898bd94a8fb15261d79e',
     secret: 'c2f1a41bbe4feeab47164198ba3debe54fdeb800',
-    // callbackURL: '/passport/github/callback',
-    // proxy: false,
+    proxy: true,
   };
 
   config.sequelize = {
