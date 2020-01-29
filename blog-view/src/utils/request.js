@@ -1,6 +1,7 @@
 import { extend } from 'umi-request';
+import router from 'umi/router';
 
-const notification = function () { };
+const notification = console;
 
 const codeMessage = {
     200: '服务器成功返回请求的数据。',
@@ -33,11 +34,13 @@ const errorHandler = (error) => {
             message: `请求错误 ${status}: ${url}`,
             description: errorText,
         });
+        return null;
     } else if (!response) {
         notification.error({
             description: '您的网络发生异常，无法连接服务器',
             message: '网络异常',
         });
+        return null;
     }
     return response;
 };

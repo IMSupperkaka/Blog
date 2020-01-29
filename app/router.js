@@ -10,5 +10,5 @@ module.exports = app => {
   });
   router.get('/passport/github', github);
   router.get('/passport/github/callback', github);
-  app.router.get('/user/getCurrentUser', app.controller.user.getCurrentUser);
+  router.get('/user/getCurrentUser', controller.user.getCurrentUser);
 };

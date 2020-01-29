@@ -1,5 +1,5 @@
-
 function BlankLayout(props) {
+
     return (
         <div>
             {props.children}

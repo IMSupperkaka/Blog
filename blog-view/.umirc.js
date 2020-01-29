@@ -4,14 +4,20 @@ export default {
   treeShaking: true,
   routes: [
     {
-      path: '/',
-      component: './index'
-    },
-    {
       path: '/user',
       component: '../layouts/BlankLayout',
       routes: [
         { path: '/user/login', component: './user/login' }
+      ]
+    },
+    {
+      path: '/',
+      component: '../layouts/BasicLayout',
+      routes: [
+        {
+          path: '/',
+          component: './index'
+        }
       ]
     }
   ],
