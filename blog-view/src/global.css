@@ -1,10 +1,10 @@
-html, body, #root {
-  height: 100%;
-}
 
 body {
   margin: 0;
   font: 400 1em / 1.5em 'Source Sans Pro',
   sans-serif;
-  color: #595B66;
+}
+
+p {
+  margin: 0;
 }

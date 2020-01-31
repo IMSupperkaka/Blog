@@ -4,6 +4,49 @@ import { connect } from 'dva';
 import withRouter from "umi/withRouter";
 import styles from './Header.less';
 
+function gologin() {
+    router.push('user/login');
+}
+
+function goToModule(path) {
+    router.push(path)
+}
+
+const navList = [
+    {
+        path: '/',
+        name: 'Home'
+    },
+    {
+        path: '/front-end',
+        name: '前端'
+    },
+    {
+        path: '/mobile',
+        name: '移动端'
+    },
+    {
+        path: '/back-end',
+        name: '后端'
+    },
+    {
+        path: '/oam',
+        name: '运维'
+    },
+    {
+        path: '/algorithm',
+        name: '算法'
+    },
+    {
+        path: '/test',
+        name: '测试'
+    },
+    {
+        path: '/computer-basics',
+        name: '计算机基础'
+    }
+]
+
 function Header(props) {
 
     const {
@@ -11,45 +54,10 @@ function Header(props) {
         user: { currentUser }
     } = props;
 
-    function gologin() {
-        router.push('user/login');
-    }
-
-    const navList = [
-        {
-            path: '/',
-            name: 'Home'
-        },
-        {
-            path: '/front-end',
-            name: '前端'
-        },
-        {
-            path: '/mobile',
-            name: '移动端'
-        },
-        {
-            path: '/back-end',
-            name: '后端'
-        },
-        {
-            path: '/oam',
-            name: '运维'
-        },
-        {
-            path: '/algorithm',
-            name: '算法'
-        },
-        {
-            path: '/test',
-            name: '测试'
-        }
-    ]
-
     const navDom = navList.map(({ name, path }) => { 
         const className = location.pathname === path ? styles.current : '';
         return (
-            <div key={name} className={className}>
+            <div onClick={goToModule.bind(this, path)} key={name} className={className}>
                 <a>{ name }</a>
             </div>
         )

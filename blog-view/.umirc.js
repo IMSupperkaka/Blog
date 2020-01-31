@@ -11,6 +11,13 @@ export default {
       ]
     },
     {
+      path: '/post',
+      component: '../layouts/BlankLayout',
+      routes: [
+        { path: '/post/detail', component: './post/Detail' }
+      ]
+    },
+    {
       path: '/',
       component: '../layouts/BasicLayout',
       routes: [
