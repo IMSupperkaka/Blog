@@ -1,10 +1,11 @@
-function BlankLayout(props) {
+import { Component } from 'react';
+import withRouter from 'umi/withRouter';
+import NProgress from 'nprogress';
 
-    return (
-        <div>
-            {props.children}
-        </div>
-    );
+class Layout extends Component {
+    render() {
+        return this.props.children;
+    }
 }
 
-export default BlankLayout;
+export default withRouter(Layout);

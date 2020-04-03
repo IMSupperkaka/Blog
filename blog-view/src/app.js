@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const dva = {
   config: {
     onError(err) {
@@ -6,3 +8,9 @@ export const dva = {
     },
   },
 };
+
+// export function onRouteChange({ location, routes, action }) {
+//   if (action == 'PUSH') {
+//     NProgress.start();
+//   }
+// }

@@ -5,14 +5,14 @@ export default {
   routes: [
     {
       path: '/user',
-      component: '../layouts/BlankLayout',
+      component: '../layouts',
       routes: [
         { path: '/user/login', component: './user/login' }
       ]
     },
     {
       path: '/post',
-      component: '../layouts/BlankLayout',
+      component: '../layouts/BasicLayout',
       routes: [
         { path: '/post/detail', component: './post/Detail' }
       ]
@@ -41,7 +41,7 @@ export default {
     ['umi-plugin-react', {
       antd: false,
       dva: true,
-      dynamicImport: { webpackChunkName: true },
+      dynamicImport: { webpackChunkName: true, loadingComponent: './components/PageLoading' },
       title: 'blog-view',
       dll: true,
       locale: {

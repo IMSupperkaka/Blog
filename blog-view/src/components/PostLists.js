@@ -3,6 +3,7 @@ import Tag from '@/components/Tag';
 import Icon from '@/components/Icon';
 import styles from './PostLists.less';
 import router from 'umi/router';
+import QueueAnim from 'rc-queue-anim';
 
 class PostLists extends React.Component {
     
@@ -37,36 +38,40 @@ class PostLists extends React.Component {
         const { list } = this.props;
 
         return (
-            list.map(({ id, title, date, tags, summary, author, commentCount, viewed}) => { 
-                return (
-                    <div key={id} className={styles.postItem}>
-                        <div className={styles.postDate}>
-                            { date }
-                        </div>
-                        <div className={styles.postTitle}>
-                            <p onClick={this.goDetail.bind(this, id)}>{title}</p>
-                            { this.buildTagDom(tags) }
-                        </div>
-                        <div className={styles.postSummary}>
-                            { summary }
-                        </div>
-                        <div className={styles.postFooter}>
-                            <div className={styles.author}>
-                                <img src={author.avatar}/>
-                                {author.name}
-                                <Icon style={{ marginLeft: 10, marginRight: 5 }} name="icon-liulan" />
-                                {viewed}
-                                <Icon style={{ marginLeft: 10, marginRight: 5 }} name="icon-pinglun" />
-                                {commentCount}
+            <QueueAnim>
+                {
+                    list.map(({ id, title, date, tags, summary, author, commentCount, viewed}) => { 
+                        return (
+                            <div key={id} className={styles.postItem}>
+                                <div className={styles.postDate}>
+                                    { date }
+                                </div>
+                                <div className={styles.postTitle}>
+                                    <p onClick={this.goDetail.bind(this, id)}>{title}</p>
+                                    { this.buildTagDom(tags) }
+                                </div>
+                                <div className={styles.postSummary}>
+                                    { summary }
+                                </div>
+                                <div className={styles.postFooter}>
+                                    <div className={styles.author}>
+                                        <img src={author.avatar}/>
+                                        {author.name}
+                                        <Icon style={{ marginLeft: 10, marginRight: 5 }} name="icon-liulan" />
+                                        {viewed}
+                                        <Icon style={{ marginLeft: 10, marginRight: 5 }} name="icon-pinglun" />
+                                        {commentCount}
+                                    </div>
+                                    <span onClick={this.goDetail.bind(this, id)} className={styles.readMore}>
+                                        Read More
+                                        <Icon style={{ color: '#E63917', marginLeft: 5 }} name="icon-you-" />
+                                    </span>
+                                </div>
                             </div>
-                            <span onClick={this.goDetail.bind(this, id)} className={styles.readMore}>
-                                Read More
-                                <Icon style={{ color: '#E63917', marginLeft: 5 }} name="icon-you-" />
-                            </span>
-                        </div>
-                    </div>
-                )
-            })
+                        )
+                    })
+                }
+            </QueueAnim>
         )
     }
 }
