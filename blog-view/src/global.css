@@ -1,10 +1,75 @@
 
 body {
   margin: 0;
-  font: 400 1em / 1.5em 'Source Sans Pro',
-  sans-serif;
+  font: 400 1em / 1.5em 'Source Sans Pro',sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 1.42857;
+  color: #333;
 }
 
 p {
   margin: 0;
+}
+
+textarea {
+  color: #333;
+}
+
+.fade-enter {
+  height: 0px;
+  overflow: hidden;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+}
+
+.fade-appear {
+  opacity: 0;
+  animation-duration: .5s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.fade-leave {
+  animation-duration: .5s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.fade-enter.fade-enter-active {
+  animation-name: fadeIn;
+  animation-play-state: running;
+}
+
+.fade-appear.fade-appear-active {
+  animation-name: fadeIn;
+  animation-play-state: running;
+}
+
+.fade-leave.fade-leave-active {
+  animation-name: fadeOut;
+  animation-play-state: running;
+}
+
+@keyframes fadeIn {
+  0% {
+    height: 0px;
+    overflow: hidden;
+  }
+  100% {
+    height: 116px;
+    overflow: hidden;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

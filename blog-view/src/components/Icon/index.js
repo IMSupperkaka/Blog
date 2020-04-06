@@ -5,10 +5,12 @@ import styles from './index.less';
 
 class Icon extends React.Component {
     render() {
-        const { name, style } = this.props;
+        const { className, name, style } = this.props;
+        console.log(className)
         const classname = classnames({
             iconfont: true,
-            [name]: true
+            [name]: true,
+            [className]: true
         });
         return (
             <span style={style} className={classname}></span>
