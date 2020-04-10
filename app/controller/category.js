@@ -1,6 +1,6 @@
 'use strict';
 
-const Controller = require('egg').Controller;
+const Controller = require('./base');
 
 class CategoryController extends Controller {
     /**
@@ -8,10 +8,32 @@ class CategoryController extends Controller {
      * 
      */
     async getCategory() {
+        console.log(11111111);
         const { ctx } = this;
-        const userId = 1;
-        const userInfo = await ctx.service.category.find(userId);
-        ctx.body = userInfo;
+        const list = await ctx.service.category.find(13);
+        console.log(list);
+
+        ctx.status = 200;
+        ctx.status = 200;
+        ctx.status = 200;
+        ctx.status = 200;
+        ctx.status = 200;
+
+        ctx.set({
+            status: 200,
+        })
+
+        console.log(ctx.status);
+
+        console.log('-------');
+
+        return this.success({
+            id: 13,
+            name: 'IMSupperkaka',
+            account: 'IMSupperkaka',
+            password: 'IMSupperkaka',
+            created_at: '2020-01-27T03:46:44.000Z',
+            updated_at: '2020-01-27T03:46:44.000Z' });
     }
 }
 

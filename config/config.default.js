@@ -16,7 +16,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1580030684794_9809';
 
   // add your middleware config here
-  config.middleware = ['passport'];
+  config.middleware = ['passport', 'notfoundHandler'];
 
   config.passportGithub = {
     key: '898bd94a8fb15261d79e',
@@ -24,14 +24,14 @@ module.exports = appInfo => {
     proxy: true,
   };
 
-  config.sequelize = {
-    dialect: 'mysql',
-    host: '118.31.184.240',
-    port: 3306,
-    database: 'bg_test',
-    username: 'root',
-    password: '3wHNY2Bq',
-  };
+  // config.sequelize = {
+  //   dialect: 'mysql',
+  //   host: '118.31.184.240',
+  //   port: 3306,
+  //   database: 'bg_test',
+  //   username: 'root',
+  //   password: '3wHNY2Bq',
+  // };
 
   config.mysql = {
     // 单数据库信息配置
