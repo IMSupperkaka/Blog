@@ -1,9 +1,9 @@
 module.exports = options => {
     return async function (ctx, next) { 
-        if (ctx.isAuthenticated()) {
+        // if (ctx.isAuthenticated()) {
             next();
-        } else { 
-            ctx.status = 401;
-        }
+        // } else { 
+            // ctx.status = 401;
+        // }
     }
 }
