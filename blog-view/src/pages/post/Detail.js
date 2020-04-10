@@ -9,7 +9,7 @@ class Detail extends React.Component {
 
         const title = '需求价值闭环管理机制';
         const date = '24 Mar 2020 | 30 min (8122 words)'
-        const content = '# markdown-it rulezz! \n # markdown-it rulezz! \n # markdown-it rulezz! \n # markdown-it rulezz! \n # markdown-it rulezz! \n # markdown-it rulezz! \n ';
+        const content = '# markdown-it rulezz! \n ```const a = 2; ``` # markdown-it rulezz! \n # markdown-it rulezz! \n # markdown-it rulezz! \n # markdown-it rulezz! \n # markdown-it rulezz! \n ';
         const data = [
           {
             id: 1,
