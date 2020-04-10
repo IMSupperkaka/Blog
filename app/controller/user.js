@@ -6,7 +6,6 @@ class UserController extends Controller {
   async getCurrentUser() {
     const { ctx } = this;
     ctx.body = ctx.user;
-    console.log(11);
   }
 }
 

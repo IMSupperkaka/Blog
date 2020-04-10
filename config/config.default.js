@@ -33,6 +33,26 @@ module.exports = appInfo => {
     password: '3wHNY2Bq',
   };
 
+  config.mysql = {
+    // 单数据库信息配置
+    client: {
+      // host
+      host: '118.31.184.240',
+      // 端口号
+      port: '3306',
+      // 用户名
+      user: 'root',
+      // 密码
+      password: '3wHNY2Bq',
+      // 数据库名
+      database: 'bg_test',
+    },
+    // 是否加载到 app 上，默认开启
+    app: true,
+    // 是否加载到 agent 上，默认关闭
+    agent: false,
+  }  
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
@@ -50,23 +70,3 @@ module.exports = appInfo => {
     ...passportConfig
   };
 };
-
-exports.mysql = {
-  // 单数据库信息配置
-  client: {
-    // host
-    host: '118.31.184.240',
-    // 端口号
-    port: '3306',
-    // 用户名
-    user: 'root',
-    // 密码
-    password: '3wHNY2Bq',
-    // 数据库名
-    database: 'bg_test',
-  },
-  // 是否加载到 app 上，默认开启
-  app: true,
-  // 是否加载到 agent 上，默认关闭
-  agent: false,
-}

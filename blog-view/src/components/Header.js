@@ -69,11 +69,12 @@ function Header(props) {
                 <div className={styles.navWrap}>
                     { navDom }
                 </div>
-                {
+                <div className={styles.avatar}>Shawn</div>
+                {/* {
                     currentUser ?
                     <div>{currentUser.name}</div> :
                     <a onClick={gologin}>登录</a>
-                }
+                } */}
             </div>
         </div>
     );

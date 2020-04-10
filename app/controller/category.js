@@ -2,7 +2,7 @@
 
 const Controller = require('egg').Controller;
 
-class UserController extends Controller {
+class CategoryController extends Controller {
     /**
      * @desc 获取分类
      * 
@@ -15,4 +15,4 @@ class UserController extends Controller {
     }
 }
 
-module.exports = UserController;
+module.exports = CategoryController;

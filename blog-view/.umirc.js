@@ -24,6 +24,34 @@ export default {
         {
           path: '/',
           component: './index'
+        },
+        {
+          path: '/front-end',
+          component: './front-end/index'
+        },
+        {
+          path: '/mobile',
+          component: './mobile/index'
+        },
+        {
+          path: '/back-end',
+          component: './back-end/index'
+        },
+        {
+          path: '/oam',
+          component: './oam/index'
+        },
+        {
+          path: '/algorithm',
+          component: './algorithm/index'
+        },
+        {
+          path: '/test',
+          component: './test/index'
+        },
+        {
+          path: '/computer-basics',
+          component: './computer-basics/index'
         }
       ]
     }
