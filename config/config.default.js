@@ -16,7 +16,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1580030684794_9809';
 
   // add your middleware config here
-  config.middleware = ['passport', 'notfoundHandler'];
+  // config.middleware = ['passport'];
 
   config.passportGithub = {
     key: '898bd94a8fb15261d79e',
