@@ -1,15 +1,24 @@
 const { Controller } = require('egg');
 class BaseController extends Controller {
-
+    // 请求返回数据
     success(data) {
         this.ctx.set({
             'Content-Type': 'application/json'
         });
         this.ctx.status = 200;
         this.ctx.body = {
-            success: true,
+            errno: 0,
+            errmsg: '',
             data,
         };
+    }
+
+    // 页码控制
+    pageConfig(page = 1, limit = 10) {
+        page = Number(page);
+        limit = Number(limit);
+        let offset = page * limit - limit;
+        return { offset, limit };
     }
 
     notFound(msg) {

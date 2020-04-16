@@ -9,12 +9,9 @@ class CategoryController extends Controller {
      */
     async list() {
         const { ctx } = this;
-
-        console.log(ctx.request.body);
-        
-        const list = await ctx.service.article.list(1, 10);
-        
-        return this.success({ a: 1 });
+        let { page, pageSize } = ctx.request.query;
+        const list = await ctx.service.article.list(this.pageConfig(page, pageSize));
+        return this.success(list);
     }
 }
 
