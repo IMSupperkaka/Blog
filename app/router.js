@@ -12,4 +12,5 @@ module.exports = app => {
   router.get('/passport/github/callback', github);
   router.get('/user/getCurrentUser', controller.user.getCurrentUser);
   router.get('/category', controller.category.getCategory);
+  router.get('/article', controller.article.list);
 };
