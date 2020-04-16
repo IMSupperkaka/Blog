@@ -10,6 +10,7 @@ class CategoryController extends Controller {
     async getCategory() {
         const { ctx } = this;
         const list = await ctx.service.category.list();
+        console.log(list)
         return this.success(list);
     }
 }

@@ -12,6 +12,12 @@ module.exports = appInfo => {
    **/
   const config = exports = {};
 
+  config.security = {
+    csrf: {
+      enable: false,
+    }
+  }
+
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1580030684794_9809';
 
@@ -51,7 +57,7 @@ module.exports = appInfo => {
     app: true,
     // 是否加载到 agent 上，默认关闭
     agent: false,
-  }  
+  }
 
   // add your user config here
   const userConfig = {
