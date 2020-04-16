@@ -7,14 +7,25 @@ class ArticleService extends Service {
     //   // 就可以直接通过 this.ctx 获取 ctx 了
     //   // 还可以直接通过 this.app 获取 app 了
     // }
-    async list({ offset, limit }) {
+    async list({ offset, limit, page, pageSize }) {
         // 假如 我们拿到用户 id 从数据库获取用户详细信息
-        return this.app.mysql.query(this.handleLineBreak(
+        // await this.app.mysql.query(this.handleLineBreak(
+        //     `SELECT a.id,a.title,b.name categoryName,a.content,a.hit_nums hitNums,a.create_time publishTime,u.name authorName FROM category as b
+        //     right join (select id,title,content,hit_nums,create_time,c_id,author_id from article) as a on a.c_id = b.id 
+        //     left join (select id,name from users) as u on a.author_id = u.id
+        //     WHERE status = 1 ORDER BY sort ASC LIMIT ?, ?`
+        // ), [offset, limit]);
+        return this.pageData(this.handleLineBreak(
+            `SELECT count(a.id) as nums FROM category as b
+            right join (select id,title,content,hit_nums,create_time,c_id,author_id from article) as a on a.c_id = b.id 
+            left join (select id,name from users) as u on a.author_id = u.id
+            WHERE status = 1 ORDER BY sort ASC`
+        ), 'nums', this.handleLineBreak(
             `SELECT a.id,a.title,b.name categoryName,a.content,a.hit_nums hitNums,a.create_time publishTime,u.name authorName FROM category as b
             right join (select id,title,content,hit_nums,create_time,c_id,author_id from article) as a on a.c_id = b.id 
             left join (select id,name from users) as u on a.author_id = u.id
             WHERE status = 1 ORDER BY sort ASC LIMIT ?, ?`
-        ), [offset, limit]);
+        ), { offset, limit, page, pageSize });
         // return this.app.mysql.select('article', { // 搜索 post 表
         //     alias: 'a',
         //     where: { status: 1 }, // WHERE 条件

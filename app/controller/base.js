@@ -18,7 +18,7 @@ class BaseController extends Controller {
         page = Number(page);
         limit = Number(limit);
         let offset = page * limit - limit;
-        return { offset, limit };
+        return { offset, limit, page, pageSize: limit };
     }
 
     notFound(msg) {
