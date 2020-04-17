@@ -18,6 +18,15 @@ export default {
       ]
     },
     {
+      path: '/tools',
+      routes: [
+        {
+          path: 'code-mirror',
+          component: './tools/code-mirror/index'
+        },
+      ]
+    },
+    {
       path: '/',
       component: '../layouts/BasicLayout',
       routes: [
@@ -53,8 +62,8 @@ export default {
           path: '/computer-basics',
           component: './computer-basics/index'
         }
-      ]
-    }
+      ],
+    },
   ],
   devServer: {
     proxy: {

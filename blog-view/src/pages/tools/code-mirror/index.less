@@ -1,0 +1,22 @@
+.codeMirrorHeader {
+    padding: 15px;
+    background-color: #272822;
+    color: #fff;
+    font-size: 32px;
+}
+.codeMirrorWrap {
+    display: flex;
+    & > div {
+        width: 50%;
+        overflow: auto;
+    }
+    .markdownWrap {
+        padding: 0 15px;
+        height: calc(100vh - 75px);
+    }
+    :global {
+        .CodeMirror {
+            height: calc(100vh - 75px);
+        }
+    }
+}
