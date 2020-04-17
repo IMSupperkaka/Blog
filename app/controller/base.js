@@ -17,6 +17,8 @@ class BaseController extends Controller {
     pageConfig(page = 1, limit = 10) {
         page = Number(page);
         limit = Number(limit);
+        page = isNaN(page) ? 1 : page;
+        limit = isNaN(limit) ? 10 : limit;
         let offset = page * limit - limit;
         return { offset, limit, page, pageSize: limit };
     }

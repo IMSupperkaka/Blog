@@ -4,10 +4,8 @@ class BaseService extends Service {
     async pageData(sql, { offset, limit, page: currentPage, pageSize }) {
         // 统计字段
         let countField = sql.match(/^select\s+(\S+?)[,| ]/i)[1];
-        console.log(countField);
         // 需要替换的字符串
         let needReplaceStr = sql.match(/^select\s(.*?)\sfrom/i)[1];
-        console.log(needReplaceStr);
         // 统计总数的语句
         let countSql = sql.replace(needReplaceStr, `count(${countField}) as nums`).replace(/limit.*?$/i, '');
         // 总条数
