@@ -30,9 +30,9 @@ class BaseService extends Service {
     }
     // 判断空
     dataEmpty(data) {
-        if (Object.prototype.toString.call(data) !== "[object Array]") {
+        if (Object.prototype.toString.call(data) === "[object Array]") {
             if (data.length == 0) return true;
-        } else if (Object.prototype.toString.call(data) !== "[object Object]") {
+        } else if (Object.prototype.toString.call(data) === "[object Object]") {
             if (Object.keys(data).length == 0) return true;
         } else {
             return [undefined, null, '', 0].includes(data);
