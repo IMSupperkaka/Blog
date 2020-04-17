@@ -8,11 +8,12 @@ class CategoryController extends Controller {
      * @method get
      * @param {int} page 页码
      * @param {int} pageSize 每页显示数 默认10
+     * @param {int} cId 分类id
      */
     async list() {
         const { ctx } = this;
-        let { page, pageSize } = ctx.request.query;
-        const list = await ctx.service.article.list(this.pageConfig(page, pageSize));
+        let { page, pageSize, cId } = ctx.request.query;
+        const list = await ctx.service.article.list(this.pageConfig(page, pageSize), { cId });
         return this.success(list);
     }
 }

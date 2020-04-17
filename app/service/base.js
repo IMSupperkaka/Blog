@@ -28,5 +28,16 @@ class BaseService extends Service {
         let a = str.replace(/[\n|\r\n|\r\t]/g, '').replace(/\s{2,}/g, " ");
         return a;
     }
+    // 判断空
+    dataEmpty(data) {
+        if (Object.prototype.toString.call(data) !== "[object Array]") {
+            if (data.length == 0) return true;
+        } else if (Object.prototype.toString.call(data) !== "[object Object]") {
+            if (Object.keys(data).length == 0) return true;
+        } else {
+            return [undefined, null, '', 0].includes(data);
+        }
+        return false;
+    }
 }
 module.exports = BaseService;
