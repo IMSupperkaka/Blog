@@ -13,4 +13,5 @@ module.exports = app => {
   router.get('/user/getCurrentUser', controller.user.getCurrentUser);
   router.get('/category', controller.category.getCategory);
   router.get('/article', controller.article.list);
+  router.get('/article/:id', controller.article.detail);
 };

@@ -1,4 +1,7 @@
-const Service = require('egg').Service;
+const Service = require('./base');
+
+const Moment = require('moment');
+
 class ArticleService extends Service {
     // 默认不需要提供构造函数。
     // constructor(ctx) {
@@ -6,15 +9,49 @@ class ArticleService extends Service {
     //   // 就可以直接通过 this.ctx 获取 ctx 了
     //   // 还可以直接通过 this.app 获取 app 了
     // }
-    async list(page, pageSize) {
-        // 假如 我们拿到用户 id 从数据库获取用户详细信息
-        return this.app.mysql.select('category', { // 搜索 post 表
-            where: { status: 1 }, // WHERE 条件
-            columns: ['name'], // 要查询的表字段
-            orders: [['sort', 'asc']], // 排序方式
-            limit: pageSize, // 返回数据量
-            offset: page, // 数据偏移量
-        })
+    async list({ offset, limit, page, pageSize }, { cId }) {
+        let condition = '';
+        if (!this.dataEmpty(cId)) {
+            condition = ` where b.id = ${cId} `;
+        }
+        let getSqlData = await this.pageData(this.handleLineBreak(
+            `SELECT a.id,a.title,b.name categoryName,a.content,a.hit_nums hitNums,a.create_time publishTime,a.name authorName,c.nums commentNums FROM category as b 
+            right join (
+            select ia.*,u.name from users u  
+            right join (select id,title,content,hit_nums,create_time,c_id,author_id,sort from article where status = 1) as ia on ia.author_id = u.id
+            ) as a on a.c_id = b.id 
+            left join (select count(id) as nums, art_id from comment where status = 1) as c on a.id = c.art_id ${condition} ORDER BY a.sort ASC,a.create_time DESC LIMIT ?, ?`
+        ), { offset, limit, page, pageSize });
+        getSqlData.data.map(v => {
+            v.content = v.content.length > 100 ? v.content.slice(0,100) + '...' : v.content;
+            v.commentNums = v.commentNums || 0;
+            v.publishTime = Moment(v.publishTime).format('YYYY-MM-DD HH:mm:ss')
+        });
+        return getSqlData;
+    }
+
+    /**
+     * @desc 获取文章 详情
+     * @method controller 
+     * @param {int} art_id 文章id
+     */
+    async detail(art_id) {
+        if (this.dataEmpty(art_id)) {
+            return { errmsg: 'not found', status: 404, errno: 1000 };
+        }
+        if (!this.positiveInteger(art_id)) {
+            return { errmsg: 'params error', status: 200, errno: 1000 };
+        }
+        // 查询有没有这文章
+        let findData = await this.app.mysql.get('article', { id: art_id });
+        // 没有查到
+        if (this.dataEmpty(findData)) {
+            return { errmsg: 'not found', status: 404, errno: 1000 };
+        }
+        // 查到了文章
+        let data = {};
+
+        return { errno: 0, data };
     }
 }
 module.exports = ArticleService;
