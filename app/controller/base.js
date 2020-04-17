@@ -16,9 +16,11 @@ class BaseController extends Controller {
     // 页码控制
     pageConfig(page = 1, limit = 10) {
         page = Number(page);
-        limit = Number(limit);
         page = isNaN(page) ? 1 : page;
+        page = page < 1 ? 1 : page;
+        limit = Number(limit);
         limit = isNaN(limit) ? 10 : limit;
+        limit = limit < 1 ? 10 : limit;
         let offset = page * limit - limit;
         return { offset, limit, page, pageSize: limit };
     }
