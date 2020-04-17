@@ -13,6 +13,18 @@ class BaseController extends Controller {
         };
     }
 
+    // 请求失败返回
+    fail({ errmsg, errno, status }) {
+        this.ctx.set({
+            'Content-Type': 'application/json'
+        });
+        this.ctx.status = status || 500;
+        this.ctx.body = {
+            errno: errno || 1000,
+            errmsg: errmsg || '',
+        };
+    }
+
     // 页码控制
     pageConfig(page = 1, limit = 10) {
         page = Number(page);

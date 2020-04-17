@@ -16,6 +16,20 @@ class CategoryController extends Controller {
         const list = await ctx.service.article.list(this.pageConfig(page, pageSize), { cId });
         return this.success(list);
     }
+
+    /**
+     * @desc 获取文章 详情
+     * @method get
+     */
+    async detail() {
+        const { ctx } = this;
+        let { id: art_id } = ctx.params;
+        const list = await ctx.service.article.detail(art_id);
+        if (list.errno != 0) {
+            return this.fail({ errmsg: list.errmsg, status: list.status, errno: list.errno });
+        }
+        return this.success(list.data);
+    }
 }
 
 module.exports = CategoryController;

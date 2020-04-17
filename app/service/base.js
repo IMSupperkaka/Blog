@@ -39,5 +39,11 @@ class BaseService extends Service {
         }
         return false;
     }
+    // 正整数
+    positiveInteger(num) {
+        if (!/^\d+$/.test(num)) false;
+        return Number(num);
+    }
+    
 }
 module.exports = BaseService;

@@ -29,5 +29,29 @@ class ArticleService extends Service {
         });
         return getSqlData;
     }
+
+    /**
+     * @desc 获取文章 详情
+     * @method controller 
+     * @param {int} art_id 文章id
+     */
+    async detail(art_id) {
+        if (this.dataEmpty(art_id)) {
+            return { errmsg: 'not found', status: 404, errno: 1000 };
+        }
+        if (!this.positiveInteger(art_id)) {
+            return { errmsg: 'params error', status: 200, errno: 1000 };
+        }
+        // 查询有没有这文章
+        let findData = await this.app.mysql.get('article', { id: art_id });
+        // 没有查到
+        if (this.dataEmpty(findData)) {
+            return { errmsg: 'not found', status: 404, errno: 1000 };
+        }
+        // 查到了文章
+        let data = {};
+
+        return { errno: 0, data };
+    }
 }
 module.exports = ArticleService;
