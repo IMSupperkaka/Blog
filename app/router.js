@@ -13,8 +13,12 @@ module.exports = app => {
   router.get('/user/getCurrentUser', controller.user.getCurrentUser);
   // 文章分类
   router.get('/category', controller.category.getCategory);
-  // 文章列表
+  // 文章列表 分页
   router.get('/article', controller.article.list);
   // 文章详情
   router.get('/article/:id', controller.article.detail);
+  // 获取主评论 分页
+  router.get('/comment', controller.comment.list);
+  // 获取更多评论
+  router.get('/comment/more', controller.comment.more);
 };

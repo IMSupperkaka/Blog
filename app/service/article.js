@@ -49,8 +49,11 @@ class ArticleService extends Service {
             return { errmsg: 'not found', status: 404, errno: 1000 };
         }
         // 查到了文章
-        let data = {};
-
+        let data = {
+            title: findData.title,
+            publishTime: Moment(findData.publishTime).format('YYYY-MM-DD HH:mm:ss'),
+            content: findData.content
+        };
         return { errno: 0, data };
     }
 }
