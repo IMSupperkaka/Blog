@@ -16,6 +16,7 @@
     "rc-queue-anim": "^1.8.4",
     "rc-tween-one": "^2.6.8",
     "react": "^16.8.6",
+    "react-codemirror": "^1.0.0",
     "react-dom": "^16.8.6",
     "react-markdown": "^4.3.1",
     "umi-request": "^1.2.18"
