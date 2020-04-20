@@ -11,7 +11,10 @@ module.exports = app => {
   router.get('/passport/github', github);
   router.get('/passport/github/callback', github);
   router.get('/user/getCurrentUser', controller.user.getCurrentUser);
+  // 文章分类
   router.get('/category', controller.category.getCategory);
+  // 文章列表
   router.get('/article', controller.article.list);
+  // 文章详情
   router.get('/article/:id', controller.article.detail);
 };

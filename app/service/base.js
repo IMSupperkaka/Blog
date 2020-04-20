@@ -2,6 +2,8 @@ const Service = require('egg').Service;
 class BaseService extends Service {
     // 处理分页数据
     async pageData(sql, { offset, limit, page: currentPage, pageSize }) {
+        // 处理多余空格
+        sql = this.handleLineBreak(sql);
         // 统计字段
         let countField = sql.match(/^select\s+(\S+?)[,| ]/i)[1];
         // 需要替换的字符串
