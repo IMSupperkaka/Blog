@@ -3,13 +3,44 @@ import ReactMarkdown from 'react-markdown';
 import styles from './Detail.less';
 import TweenOne from 'rc-tween-one';
 import Comment from '@/components/Comment';
+import CodeBlock from "@/components/ReactMarkdown/CodeBlock";
+
+const initialSource = `
+# Live demo
+Changes are automatically rendered as you type.
+## Table of Contents
+* Implements [GitHub Flavored Markdown](https://github.github.com/gfm/)
+* Renders actual, "native" React DOM elements
+* Allows you to escape or skip HTML (try toggling the checkboxes above)
+* If you escape or skip the HTML, no \`dangerouslySetInnerHTML\` is used! Yay!
+## HTML block below
+## How about some code?
+\`\`\`js
+var React = require('react');
+var Markdown = require('react-markdown');
+React.render(
+  <Markdown source="# Your markdown here" />,
+  document.getElementById('content')
+);
+\`\`\`
+Pretty neat, eh?
+## Tables?
+| Feature   | Support |
+| --------- | ------- |
+| tables    | ✔ |
+| alignment | ✔ |
+| wewt      | ✔ |
+## More info?
+Read usage information and more on [GitHub](//github.com/rexxars/react-markdown)
+---------------
+A component by [Espen Hovlandsdal](https://espen.codes/)
+`
 
 class Detail extends React.Component {
     render() {
 
         const title = '需求价值闭环管理机制';
         const date = '24 Mar 2020 | 30 min (8122 words)'
-        const content = '# markdown-it rulezz! \n ```const a = 2; ``` # markdown-it rulezz! \n # markdown-it rulezz! \n # markdown-it rulezz! \n # markdown-it rulezz! \n # markdown-it rulezz! \n ';
         const data = [
           {
             id: 1,
@@ -74,7 +105,14 @@ class Detail extends React.Component {
                         <div className={styles.title}>{ title }</div>
                     </div>
                     <div className={styles.body}>
-                        <ReactMarkdown source={content}></ReactMarkdown>
+                        <ReactMarkdown
+                          skipHtml={false}
+                          escapeHtml={false}
+                          source={initialSource}
+                          renderers={{
+                            code: CodeBlock
+                          }}
+                        ></ReactMarkdown>
                     </div>
                     <Comment data={data}/>
                 </div>

@@ -1,9 +1,33 @@
 import React from 'react';
+import TWEEN, { Tween } from 'tween';
 import ReactMarkdown from 'react-markdown';
 import Animate from 'rc-animate';
 import styles from './CommontItem.less';
 import Icon from '@/components/Icon';
 import classnames from 'classnames';
+
+animate();
+function animate() {
+  requestAnimationFrame(animate);
+  TWEEN.update();
+}
+
+const animationOption = {
+  enter: function (node, done) {
+    let coords = { height: 0, opacity: 0, marginTop: 0 };
+    const height = node?.clientHeight;
+    node.style.height = 0;
+    const tween = new Tween(coords);
+    tween.to({ height: height, opacity: 1, marginTop: 15 }, 300).easing(TWEEN.Easing.Cubic.InOut).onUpdate((a) => {
+      node.style.height = coords.height + 'px';
+      node.style.opacity = coords.opacity;
+      node.style.marginTop = coords.marginTop + 'px';
+    }).start();
+  },
+  leave: function (node, done) {
+
+  }
+}
 
 class CommontItem extends React.Component {
 
@@ -46,8 +70,7 @@ class CommontItem extends React.Component {
             }
             <div onClick={this.handleReply} className={styles.reply}>回复</div>
             <Animate
-              component=""
-              transitionName="fade"
+              animation={animationOption}
             >
               {
                 this.state.showReply &&
