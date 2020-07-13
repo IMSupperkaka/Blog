@@ -41,7 +41,7 @@ class PostLists extends React.Component {
         const { list } = this.props;
 
         return (
-            <QueueAnim leaveReverse={true} ease={['easeOutQuart', 'easeInOutQuart']}>
+            <QueueAnim leaveReverse={true}>
                 {
                     list.map(({ id, title, date, tags, content, authorName, commentNums, hitNums}) => {
                         return (
