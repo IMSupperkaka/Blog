@@ -15,6 +15,11 @@ textarea {
   color: #333;
 }
 
+.queue-anim-leaving {
+  position: absolute!important;
+  width:100%;
+}
+
 .fade-enter {
   height: 0px;
   overflow: hidden;

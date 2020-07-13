@@ -3,13 +3,13 @@
 export default {
   treeShaking: true,
   routes: [
-    {
-      path: '/user',
-      component: '../layouts',
-      routes: [
-        { path: '/user/login', component: './user/login' }
-      ]
-    },
+    // {
+    //   path: '/user',
+    //   component: '../layouts',
+    //   routes: [
+    //     { path: '/user/login', component: './user/login' }
+    //   ]
+    // },
     {
       path: '/post',
       component: '../layouts/BasicLayout',
@@ -32,38 +32,22 @@ export default {
       routes: [
         {
           path: '/',
-          component: './index'
+          redirect: '/home'
         },
         {
           path: '/front-end',
-          component: './front-end/index'
+          component: './Article/index'
         },
         {
           path: '/mobile',
-          component: './mobile/index'
-        },
-        {
-          path: '/back-end',
-          component: './back-end/index'
-        },
-        {
-          path: '/oam',
-          component: './oam/index'
-        },
-        {
-          path: '/algorithm',
-          component: './algorithm/index'
-        },
-        {
-          path: '/test',
-          component: './test/index'
-        },
-        {
-          path: '/computer-basics',
-          component: './computer-basics/index'
+          component: './Article/index'
         }
+        // {
+        //   path: '/article/list/:name',
+        //   component: './Article/index'
+        // }
       ],
-    },
+    }
   ],
   devServer: {
     proxy: {

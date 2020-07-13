@@ -8,9 +8,3 @@ export const dva = {
     },
   },
 };
-
-// export function onRouteChange({ location, routes, action }) {
-//   if (action == 'PUSH') {
-//     NProgress.start();
-//   }
-// }

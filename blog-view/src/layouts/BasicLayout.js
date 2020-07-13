@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './index.css';
 import { connect } from 'dva';
-import Header from '@/components/Header';
 import Layout from './index';
 
 class BasicLayout extends React.Component {
@@ -13,13 +12,13 @@ class BasicLayout extends React.Component {
     })
   }
 
-  render() { 
+  render() {
+    const key = this.props.location.pathname;
     return (
       <Layout>
         <div className={styles.normal}>
-          <Header />
           <div className={styles.content}>
-            {this.props.children}
+              {this.props.children}
           </div>
         </div>
       </Layout>
