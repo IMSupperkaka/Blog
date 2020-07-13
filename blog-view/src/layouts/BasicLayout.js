@@ -13,7 +13,6 @@ class BasicLayout extends React.Component {
   }
 
   render() {
-    const key = this.props.location.pathname;
     return (
       <Layout>
         <div className={styles.normal}>

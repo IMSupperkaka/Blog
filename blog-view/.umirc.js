@@ -11,22 +11,6 @@ export default {
     //   ]
     // },
     {
-      path: '/post',
-      component: '../layouts/BasicLayout',
-      routes: [
-        { path: '/post/detail', component: './post/Detail' }
-      ]
-    },
-    {
-      path: '/tools',
-      routes: [
-        {
-          path: 'code-mirror',
-          component: './tools/code-mirror/index'
-        },
-      ]
-    },
-    {
       path: '/',
       component: '../layouts/BasicLayout',
       routes: [
@@ -41,11 +25,17 @@ export default {
         {
           path: '/mobile',
           component: './Article/index'
+        },
+        {
+          path: '/code-mirror',
+          component: './tools/code-mirror/index'
+        },
+        {
+          path: '/post',
+          routes: [
+            { path: 'detail', component: './post/Detail' }
+          ]
         }
-        // {
-        //   path: '/article/list/:name',
-        //   component: './Article/index'
-        // }
       ],
     }
   ],
