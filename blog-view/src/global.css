@@ -15,66 +15,29 @@ textarea {
   color: #333;
 }
 
-.queue-anim-leaving {
+.demo-router-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.demo-router-wrap > .queue-anim-leaving {
   position: absolute!important;
   width:100%;
 }
 
-.fade-enter {
-  height: 0px;
-  overflow: hidden;
-  animation-duration: 2s;
-  animation-fill-mode: both;
-  animation-timing-function: linear;
-  animation-play-state: paused;
-}
-
-.fade-appear {
-  opacity: 0;
-  animation-duration: .5s;
-  animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
-  animation-play-state: paused;
-}
-
-.fade-leave {
-  animation-duration: .5s;
-  animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
-  animation-play-state: paused;
-}
-
-.fade-enter.fade-enter-active {
-  animation-name: fadeIn;
-  animation-play-state: running;
-}
-
-.fade-appear.fade-appear-active {
-  animation-name: fadeIn;
-  animation-play-state: running;
-}
-
-.fade-leave.fade-leave-active {
-  animation-name: fadeOut;
-  animation-play-state: running;
-}
-
-@keyframes fadeIn {
-  0% {
-    height: 0px;
-    overflow: hidden;
-  }
-  100% {
-    height: 116px;
-    overflow: hidden;
-  }
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
+.fade-enter{
     opacity: 0;
-  }
-}
+ }
+ .fade-exit{
+    opacity: 1;
+ }
+ .fade-enter-active{
+    opacity: 1;
+ }
+ .fade-exit-active{
+    opacity: 0;
+ }
+ .fade-enter-active,
+ .fade-exit-active{
+    transition: opacity 400ms;
+ }

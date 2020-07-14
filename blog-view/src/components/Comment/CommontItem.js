@@ -60,7 +60,7 @@ class Comment extends React.Component {
             showReply: true,
             replyValue: title && `@${title} `
         }, () => {
-            this.replyRef && this.replyRef.current.focus();
+            // this.replyRef && this.replyRef.current.focus();
             this.replyRef.current.selectionStart = title?.length + 2;
         })
     }

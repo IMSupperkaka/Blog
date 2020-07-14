@@ -4,7 +4,7 @@ import 'nprogress/nprogress.css';
 
 class Loading extends React.Component {
 
-    componentDidMount() {
+    componentWillMount() {
         NProgress.start();
     }
 

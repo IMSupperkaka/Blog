@@ -1,5 +1,4 @@
 import { extend } from 'umi-request';
-import router from 'umi/router';
 
 const notification = console;
 

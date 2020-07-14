@@ -1,30 +1,37 @@
 import React from 'react';
+import NProgress from 'nprogress';
+import WithRouter from 'umi/withRouter';
+import { SwitchTransition, CSSTransition } from "react-transition-group";
+import Header from '@/components/Header';
 import styles from './index.css';
-import { connect } from 'dva';
-import Layout from './index';
 
 class BasicLayout extends React.Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
 
-    dispatch({
-      type: 'user/getCurrentUser'
-    })
-  }
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            NProgress.start();
+        }
+    }
 
-  render() {
-    return (
-      <Layout>
-        <div className={styles.normal}>
-          <div className={styles.content}>
-              {this.props.children}
-          </div>
-        </div>
-      </Layout>
-    );
-  }
+    render() {
+        const key = this.props.location.pathname;
+        return (
+            <div>
+                <Header />
+                <div className={styles.normal}>
+                    <div className={styles.content}>
+                        <SwitchTransition mode="out-in">
+                            <CSSTransition key={key} addEndListener={(node, done) => {
+                                node.addEventListener("transitionend", done, false);
+                            }} classNames="fade">
+                                {this.props.children}
+                            </CSSTransition>
+                        </SwitchTransition>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
-export default connect(({ user }) => ({
-  user
-}))(BasicLayout);
+export default WithRouter(BasicLayout);

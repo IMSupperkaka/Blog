@@ -6,7 +6,6 @@ import styles from './index.less';
 class Icon extends React.Component {
     render() {
         const { className, name, style } = this.props;
-        console.log(className)
         const classname = classnames({
             iconfont: true,
             [name]: true,

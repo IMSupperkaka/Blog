@@ -17,9 +17,9 @@ class PostLists extends React.Component {
         return tagColorMap.get(tag);
     }
 
-    buildTagDom(tags) {
+    buildTagDom(tags = '') {
         if (!Array.isArray(tags)) {
-          return console.warn('tags is not a array');
+            tags = tags.split(',');
         }
         return tags.map((tag, index) => {
             return (
@@ -43,11 +43,11 @@ class PostLists extends React.Component {
         return (
             <QueueAnim leaveReverse={true}>
                 {
-                    list.map(({ id, title, date, tags, content, authorName, commentNums, hitNums}) => {
+                    list.map(({ id, title, publishTime, tags, content, authorName, commentNums, hitNums}) => {
                         return (
                             <div key={id} className={styles.postItem}>
                                 <div className={styles.postDate}>
-                                    { date }
+                                    { new Date(publishTime).toDateString() }
                                 </div>
                                 <div className={styles.postTitle}>
                                     <p onClick={this.goDetail.bind(this, id)}>{title}</p>

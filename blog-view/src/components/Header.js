@@ -4,10 +4,6 @@ import { connect } from 'dva';
 import withRouter from "umi/withRouter";
 import styles from './Header.less';
 
-function gologin() {
-    router.push('user/login');
-}
-
 function goToModule(path) {
     router.push(path)
 }

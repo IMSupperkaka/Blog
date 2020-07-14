@@ -15,10 +15,10 @@ class ArticleService extends Service {
             condition = ` where b.id = ${cId} `;
         }
         let getSqlData = await this.pageData(
-            `SELECT a.id,a.title,b.name categoryName,a.content,a.hit_nums hitNums,a.create_time publishTime,a.name authorName,c.nums commentNums FROM category as b 
+            `SELECT a.id,a.tags,a.title,b.name categoryName,a.content,a.hit_nums hitNums,a.create_time publishTime,a.name authorName,c.nums commentNums FROM category as b 
             right join (
             select ia.*,u.name from users u  
-            right join (select id,title,content,hit_nums,create_time,c_id,author_id,sort from article where status = 1) as ia on ia.author_id = u.id
+            right join (select id,title,tags,content,hit_nums,create_time,c_id,author_id,sort from article where status = 1) as ia on ia.author_id = u.id
             ) as a on a.c_id = b.id 
             left join (select count(id) as nums, art_id from comment where status = 1) as c on a.id = c.art_id ${condition} ORDER BY a.sort ASC,a.create_time DESC LIMIT ?, ?`
         , { offset, limit, page, pageSize });

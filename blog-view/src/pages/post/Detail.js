@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import styles from './Detail.less';
-import TweenOne from 'rc-tween-one';
 import Comment from '@/components/Comment';
 import CodeBlock from "@/components/ReactMarkdown/CodeBlock";
 
@@ -96,7 +95,7 @@ class Detail extends React.Component {
             }
         ];
         return (
-            <TweenOne key="0" animation={{ opacity: 1 }} style={{ opacity: 0, marginBottom: 10 }}>
+            <div>
                 <div className={styles.container}>
                     <div>
                         <div className={styles.date}>
@@ -116,7 +115,7 @@ class Detail extends React.Component {
                     </div>
                     <Comment data={data} />
                 </div>
-            </TweenOne>
+            </div>
         )
     }
 }
