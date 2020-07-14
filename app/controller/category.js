@@ -7,10 +7,9 @@ class CategoryController extends Controller {
      * @desc 获取分类
      * 
      */
-    async getCategory() {
+    async index() {
         const { ctx } = this;
         const list = await ctx.service.category.list();
-        console.log(list)
         return this.success(list);
     }
 }

@@ -30,19 +30,19 @@ const navList = [
         name: '后端'
     },
     {
-        path: '/oam',
+        path: '/article/list/oam',
         name: '运维'
     },
     {
-        path: '/algorithm',
+        path: '/article/list/algorithm',
         name: '算法'
     },
     {
-        path: '/test',
+        path: '/article/list/test',
         name: '测试'
     },
     {
-        path: '/computer-basics',
+        path: '/article/list/computer-basics',
         name: '计算机基础'
     }
 ]
@@ -54,7 +54,7 @@ function Header(props) {
         user: { currentUser }
     } = props;
 
-    const navDom = navList.map(({ name, path }) => { 
+    const navDom = navList.map(({ name, path }) => {
         const className = location.pathname === path ? styles.current : '';
         return (
             <div onClick={goToModule.bind(this, path)} key={name} className={className}>

@@ -1,11 +1,24 @@
-import { Component } from 'react';
-import withRouter from 'umi/withRouter';
-import NProgress from 'nprogress';
+import React from 'react';
+import QueueAnim from 'rc-queue-anim';
+import WithRouter from 'umi/withRouter';
+import Header from '@/components/Header';
 
-class Layout extends Component {
-    render() {
-        return this.props.children;
-    }
+class BasicLayout extends React.Component {
+  render() {
+    const key = this.props.location.pathname;
+    return (
+      <div>
+        <Header />
+        <QueueAnim type={['right', 'left']} className="demo-router-wrap">
+          {
+            React.Children.map(this.props.children, child => {
+              return React.cloneElement(child, { key });
+            })
+          }
+        </QueueAnim>
+      </div>
+    );
+  }
 }
 
-export default withRouter(Layout);
+export default WithRouter(BasicLayout);
