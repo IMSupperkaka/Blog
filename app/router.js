@@ -21,6 +21,7 @@ module.exports = app => {
     // 获取更多评论
     router.get('/comment/more', controller.comment.more);
 
+    router.post('/tool/qiniu/pfop/check', controller.tool.qiniu.pfop.check);
     // 七牛持久化
     router.resources('pfop', '/tool/qiniu/pfop', controller.tool.qiniu.pfop);
 };

@@ -3,6 +3,37 @@ const Controller = require('../../base');
 
 class Qiniu extends Controller {
 
+    async check() {
+        const { ctx } = this;
+        const { userImageList } = ctx.request.body;
+        const requestList = userImageList.map((v, index) => {
+            const req = async () => {
+                const response = await ctx.curl(v.synthesisImage);
+
+                if (response.status == 400) { // 持久化
+                    return {
+                        status: response.status,
+                        index: index,
+                        synthesisImage: v.synthesisImage
+                    }
+                }
+
+                return {
+                    status: response.status,
+                    index: index,
+                    synthesisImage: v.synthesisImage
+                }
+            }
+            return req();
+        })
+        const errorList = (await Promise.all(requestList)).filter((v) => {
+            return v.status != 200;
+        })
+        this.success({
+            errorList: errorList
+        })
+    }
+
     // 创建持久化资源
     async create() {
         const { ctx } = this;
