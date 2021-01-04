@@ -12,8 +12,8 @@ class CategoryController extends Controller {
      */
     async index() {
         const { ctx } = this;
-        let { page, pageSize, cId } = ctx.request.query;
-        const list = await ctx.service.article.list(this.pageConfig(page, pageSize), { cId });
+        let { page, pageSize, type } = ctx.request.query;
+        const list = await ctx.service.article.list(this.pageConfig(page, pageSize), { type });
         return this.success(list);
     }
 

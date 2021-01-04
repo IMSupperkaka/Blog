@@ -1,6 +1,8 @@
-# MarkDown语法
+Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。Markdown 语言在 2004 由约翰·格鲁伯（英语：John Gruber）创建。Markdown 编写的文档可以导出 HTML 、Word、图像、PDF、Epub 等多种格式的文档。
 
-为了更有效率地更新和发布博客，我的博客将会采用MarkDown语法来渲染。所以本次就讲一讲MarkDown的一些基本语法啦。
+为了更有效率地更新和发布博客，我的博客采用MarkDown语法来渲染。所以本次就讲一讲MarkDown的一些基本语法。
+
+这是一个基于react-codemirror和react-markdown实现的[实时Markdown编辑器](/code-mirror)。
 
 # 一、标题
 

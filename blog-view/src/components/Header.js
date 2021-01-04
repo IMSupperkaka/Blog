@@ -10,35 +10,31 @@ function goToModule(path) {
 
 const navList = [
     {
-        path: '/',
-        name: 'Home'
-    },
-    {
-        path: '/front-end',
+        path: '/article/front-end',
         name: '前端'
     },
     {
-        path: '/mobile',
+        path: '/article/mobile',
         name: '移动端'
     },
     {
-        path: '/back-end',
+        path: '/article/back-end',
         name: '后端'
     },
     {
-        path: '/article/list/oam',
+        path: '/article/oam',
         name: '运维'
     },
     {
-        path: '/article/list/algorithm',
+        path: '/article/algorithm',
         name: '算法'
     },
     {
-        path: '/article/list/test',
+        path: '/article/test',
         name: '测试'
     },
     {
-        path: '/article/list/computer-basics',
+        path: '/article/computer-basics',
         name: '计算机基础'
     }
 ]
@@ -51,7 +47,8 @@ function Header(props) {
     } = props;
 
     const navDom = navList.map(({ name, path }) => {
-        const className = location.pathname === path ? styles.current : '';
+        const activeReg = new RegExp(path);
+        const className = activeReg.test(location.pathname) ? styles.current : '';
         return (
             <div onClick={goToModule.bind(this, path)} key={name} className={className}>
                 <a>{ name }</a>
@@ -66,11 +63,6 @@ function Header(props) {
                     { navDom }
                 </div>
                 <div className={styles.avatar}>Shawn</div>
-                {/* {
-                    currentUser ?
-                    <div>{currentUser.name}</div> :
-                    <a onClick={gologin}>登录</a>
-                } */}
             </div>
         </div>
     );
